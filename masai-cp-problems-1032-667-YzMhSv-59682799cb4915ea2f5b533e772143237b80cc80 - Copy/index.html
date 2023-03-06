@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stock Management</title>
     <style>
-     
+      /* All necessery styles here  */
     </style>
   </head>
   <body>
@@ -48,64 +48,64 @@
     </table>
   </body>
   <script>
-    document.querySelector("form").addEventListner("submit",comp);
-    var final=0;
-    function comp(){
-      event.preventDefault();
-      var name=document.getElementById("name").value;
-      var category=document.getElementById("category").value;
-      var sector=document.getElementById("sector").value;
-      var price=document.getElementById("price").value;
-      var quantity=document.getElementById("quantity").value;
-      var date=document.getElementById("addDate").value;
-      if(name==""||category==""||sector==""||price==""||quantity==""||date=="")
-      {
-        alert("Fill all the Input Fields");
-        return;
-      }
-      var tabblerow=document.createElement("tr");
-      var tabledescription=document.createElement("td");
-      tabledescription.textContent=name;
+    // Write all necessery JS Here
+    document.querySelector("form").addEventListener("submit",work);
+    var answer=0;
+    function work(){
+    event.preventDefault();
 
-      var tabledescription1=document.createElement("td");
-      tabledescription1.textContent=category;
+    var name=document.getElementById("name").value;
+    var category=document.getElementById("category").value;
+    var sector=document.getElementById("sector").value;
+    var price=document.getElementById("price").value;
+    var quantity=document.getElementById("quantity").value;
+    var date=document.getElementById("addDate").value;
 
-      var tabledescription2=document.createElement("td");
-      tabledescription2.textContent=sector;
-
-      var tabledescription3=document.createElement("td");
-      tabledescription3.textContent=price;
-
-      var tabledescription4=document.createElement("td");
-      tabledescription4.textContent=quantity;
-
-      var tabledescription5=document.createElement("td");
-      tabledescription5.textContent=price * quantity;
-      final=final+parseInt(price * quantity)
-
-
-      document.querySelector("span").innerText=final;
-
-      var tabledescription6=document.createElement("td");
-      tabledescription6.textContent=date;
-
-      var tabledescription7=document.createElement("td");
-      tabledescription7.textContent="Delete";
-      tabledescription7.addEventListener("click", protfolio);
-
-      tabblerow.append(tabledescription,tabledescription1,tabledescription2,tabledescription3,tabledescription4,tabledescription5,tabledescription6,tabledescription7);
-      document.querySelector("tbody").append(tabblerow);
-
-      function protfolio(){
-        event.target.parentNode.remove();
-        final=final-parseInt(price*quantity);
-        document.getElementById("total-price").innerText="Total Price:-"+final;
-      }
-
-
-
-      
-      
+    if(name=="" || category =="" || sector=="" || price==""|| quantity=="" ||date==""){
+      alert("Kindly Fill All Boxes");
+      return;
     }
+
+  
+    var tr=document.createElement("tr");
+
+    var tabled1=document.createElement("td");
+    tabled1.textContent=name;
+
+    var tabled2=document.createElement("td");
+    tabled2.textContent=category;
+
+    var tabled3=document.createElement("td");
+    tabled3.textContent=sector;
+
+    var tabled4=document.createElement("td");
+    tabled4.textContent=price;
+
+    var tabled5=document.createElement("td");
+    tabled5.textContent=quantity;
+
+    var tabled6=document.createElement("td");
+    tabled6.textContent=price*quantity;
+    answer+=parseInt(price*quantity);
+    document.querySelector("span").innerText=answer;
+   
+    var tabled7=document.createElement("td");
+    tabled7.textContent=date;
+
+    var tabled8=document.createElement("td");
+    tabled8.textContent="Delete";
+    tabled8.addEventListener("click",final);
+    
+
+    tr.append(tabled1,tabled2,tabled3,tabled4,tabled5,tabled6,tabled7,tabled8);
+    document.querySelector("tbody").append(tr);
+
+    
+    function final(){
+      event.target.parentNode.remove();
+      answer-=parseInt(prc*qun);
+    document.getElementById("total-price").innerText="Total Price:-"+answer;
+    }
+  }
   </script>
 </html>
