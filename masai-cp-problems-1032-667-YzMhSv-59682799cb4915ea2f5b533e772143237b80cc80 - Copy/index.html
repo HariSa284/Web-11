@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stock Management</title>
     <style>
-      /* All necessery styles here  */
+     
     </style>
   </head>
   <body>
@@ -48,6 +48,64 @@
     </table>
   </body>
   <script>
-    // Write all necessery JS Here
+    document.querySelector("form").addEventListner("submit",comp);
+    var final=0;
+    function comp(){
+      event.preventDefault();
+      var name=document.getElementById("name").value;
+      var category=document.getElementById("category").value;
+      var sector=document.getElementById("sector").value;
+      var price=document.getElementById("price").value;
+      var quantity=document.getElementById("quantity").value;
+      var date=document.getElementById("addDate").value;
+      if(name==""||category==""||sector==""||price==""||quantity==""||date=="")
+      {
+        alert("Fill all the Input Fields");
+        return;
+      }
+      var tabblerow=document.createElement("tr");
+      var tabledescription=document.createElement("td");
+      tabledescription.textContent=name;
+
+      var tabledescription1=document.createElement("td");
+      tabledescription1.textContent=category;
+
+      var tabledescription2=document.createElement("td");
+      tabledescription2.textContent=sector;
+
+      var tabledescription3=document.createElement("td");
+      tabledescription3.textContent=price;
+
+      var tabledescription4=document.createElement("td");
+      tabledescription4.textContent=quantity;
+
+      var tabledescription5=document.createElement("td");
+      tabledescription5.textContent=price * quantity;
+      final=final+parseInt(price * quantity)
+
+
+      document.querySelector("span").innerText=final;
+
+      var tabledescription6=document.createElement("td");
+      tabledescription6.textContent=date;
+
+      var tabledescription7=document.createElement("td");
+      tabledescription7.textContent="Delete";
+      tabledescription7.addEventListener("click", protfolio);
+
+      tabblerow.append(tabledescription,tabledescription1,tabledescription2,tabledescription3,tabledescription4,tabledescription5,tabledescription6,tabledescription7);
+      document.querySelector("tbody").append(tabblerow);
+
+      function protfolio(){
+        event.target.parentNode.remove();
+        final=final-parseInt(price*quantity);
+        document.getElementById("total-price").innerText="Total Price:-"+final;
+      }
+
+
+
+      
+      
+    }
   </script>
 </html>
